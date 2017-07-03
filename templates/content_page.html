@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block searching %}
+<div class="well well-small">
+
+    <div class="row">
+        <div class="col-xs-12">
+
+                {% block poisk_kartridj %}{% endblock %}
+                {% block brand_choose %}{% endblock %}
+                {% block printer_choose %}{% endblock %}
+
+
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block information %}
+
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <div class="article">
+                <article>
+                    <img src="" align="right">
+                    <h4>Добро пожаловать</h4>
+
+                    <p>Московский Сервисный центр "ЗаправкаСервис" на протяжении нескольких лет зарекомендовал себя как надежный и качественный исполнитель на рынке услуг по заправке картриджей, по обслуживанию и ремонту  оргтехники. Мы благодарны всем  нашим клиентам за оказанное нам доверии и надеемся на дальнейшее сотрудничество. <a href="">Дальше <span class="glyphicon glyphicon-arrow-right"></span></a></p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block content_detail %}
+
+
+
+
+{% endblock %}

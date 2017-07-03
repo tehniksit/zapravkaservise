@@ -1,0 +1,30 @@
+{% extends 'content_page.html' %}
+{% load static %}
+{% block printer_choose %}
+<h5>Выбрать устройство</h5>
+
+
+
+<form action="{% url 'detail_of_printer' %}" method="GET">
+
+<div class="form-group">
+
+
+    {{ form }}
+
+</div>
+
+
+<button class="btn btn-lg btn-success btn-block" type="submit">Показать прайс</button>
+</form>
+{% endblock %}
+{% block content_detail %}
+    <br><br><br>
+    <h4><------------Выберите модель устройства</h4>
+    <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <img src="{% static 'img/brand_icons/Brands4-1024x175.png' %}" alt="Logo" class="img-responsive">
+
+            </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'content_page.html' %}
+{% load static %}
+{% block brand_choose %}
+    <h4>Выбрать бренд</h4>
+        <form action="{% url 'printer_choose'  %}" method="GET">
+            <div class="form-group">
+                <select class="form-control" id="brand" name="brand" >
+                    <option>Hp</option>
+                    <option>Canon</option>
+                    <option>Kyocera</option>
+                    <option>Brother</option>
+                    <option>Xerox</option>
+                    <option>Panasonic</option>
+                    <option>Samsung</option>
+                    <option>Ricoh</option>
+                    <option>OKI</option>
+                    <option>Lexmark</option>
+
+                </select>
+
+
+
+            </div>
+
+
+        <button class="btn btn-lg btn-success btn-block" type="submit">Выбрать</button>
+        </form>
+{% endblock %}
+
+{% block content_detail %}
+<br><br>
+<h4><------------Выберите бренд устройства</h4>
+<div class="row">
+
+        <div class="col-xs-12 col-md-12">
+            <img src="{% static 'img/brand_icons/Brands4-1024x175.png' %}" alt="Logo" class="img-responsive">
+
+        </div>
+</div>
+{% endblock %}

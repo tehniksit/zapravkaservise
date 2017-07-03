@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block contact_page %}
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+
+        <!-- START CONTENT ITEM -->
+        <form class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-4 control-label" for="field_01">Имя</label>
+                    <div class="col-xs-12 col-sm-8">
+                        <input type="text" class="form-control" name="field_01" id="field_01">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-4 control-label" for="field_02">Телефон</label>
+                    <div class="col-xs-12 col-sm-8">
+                        <input type="text" class="form-control" name="field_02" id="field_02">
+                        <p class="help-block">Вводите в формате ##-###-###-##</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-4 control-label" for="field_03">Ваша почта</label>
+                    <div class="col-xs-12 col-sm-8">
+                        <input type="text" class="form-control" name="field_03" id="field_03">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-12 col-sm-4 control-label" for="field_05">Комментарий</label>
+                    <div class="col-xs-12 col-sm-8">
+                        <textarea class="form-control" rows="5" name="field_05" id="field_05"></textarea>
+                        <p class="help-block">Макс. 250 символов</p>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button class="btn"><i class="icon-refresh"></i> Сбросить</button> <button class="btn btn-primary"> Отправить <i class="icon-chevron-right icon-white"></i> </button>
+                </div>
+            </fieldset>
+        </form>
+        <!-- END CONTENT ITEM -->
+
+    </div>
+    <div class="col-xs-12 col-sm-6">
+        <div class="well">
+
+            <!-- START CONTENT ITEM -->
+            <address>
+                <strong>ЗаправкаСервис</strong><br>
+                г Москва, пр. Завода Серп и Молот, 6к1 п.2, оф 106<br>
+
+                <br>
+                <strong>Phone</strong>: 8(495) 790-77-50 <br>   8(903) 667-70-80<br>
+                <strong>E-mail</strong>: zapravkaservice@mail.ru<br>
+            </address>
+            <div class="googlemap">
+                <iframe width="100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d561.3214435144973!2d37.697572829225834!3d55.753537753496566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54aa4a0849bb9%3A0x9644b1ace9a5db27!2z0L_RgC4g0JfQsNCy0L7QtNCwINCh0LXRgNC_INC4INCc0L7Qu9C-0YIsIDbQujEsINCc0L7RgdC60LLQsCwgMTExMjUw!5e0!3m2!1sru!2sru!4v1499029914324"></iframe>
+            </div>
+            <!-- END CONTENT ITEM -->
+
+        </div>
+    </div>
+</div>
+{% endblock %}

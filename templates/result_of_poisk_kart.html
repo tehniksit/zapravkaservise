@@ -1,0 +1,59 @@
+{% extends 'poisk_kartridj.html' %}
+{%  load static %}
+
+
+{% block content_detail %}
+    <div class="row">
+        <div class="col-xs-12">
+            <br>
+        </div>
+
+    </div>
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row product-list-inline-small">
+                    {% for result in result_kartridjes %}
+                    <div class="col-xs-4 col-sm-3">
+                        <div class="thumbnail">
+                            <a href="{% url 'detail_of_cartridge' %}?cart_id={{ result.id }}"><img  src="{{ STATIC_URL }}{{ result.image_kartridj  }} " alt="" style="height:100px;"></a>
+                            <div class="caption">
+                                <a href=""><p>Заправка {{ result.short_name }}</p></a>
+                                <p>{{ result.long_name  }}<span class="label label-danger price pull-right">{{ result.price  }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+
+    {% if paginator.count > 8 %}
+        <!--paginator-->
+        <div class="row">
+            <div class="col-xs-12">
+
+                <!-- START CONTENT ITEM -->
+                <ul class="pagination pull-right">
+                    {% for pn in result_kartridjes.paginator.page_range %}
+
+                            {% if pn == current_page %}
+                                <li class="active"><a  href="{% url 'result_of_poisk' %}?page={{ pn }}">{{ pn }}</a></li>
+                            {% elif pn != current_page %}
+                                <li><a  href="{% url 'result_of_poisk' %}?poisk={{ request.GET.poisk }}&page={{ pn }}">{{ pn }}</a></li>
+                            {% endif %}
+                    {% endfor %}
+
+                </ul>
+                <!-- END CONTENT ITEM -->
+
+            </div>
+        </div>
+    {% endif %}
+
+
+        <!--paginator-->
+{% endblock %}

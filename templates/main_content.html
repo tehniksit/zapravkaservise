@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_content %}
+{% include 'spec_offer.html' %}
+{% include 'slider.html' %}
+<br>
+<div class="row">
+
+				<div class="col-xs-12">
+
+					<!-- START CONTENT ITEM -->
+					<div class="product-list-inline-large">
+						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+							<div class="thumbnail dark">
+								<a href="{% url 'poisk_kartridj' %}">
+									<img data-hover="{% static 'img/zapravka_kartrigey_hover.png' %}" src="{% static 'img/zapravka_kartrige1.png' %}" alt="">
+								</a>
+									<strong>Узнать цены на заправку</strong>
+								<br><br><a href="{% url 'poisk_kartridj' %}" class="btn btn-default btn-block">Открыть</a>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+							<div class="thumbnail light">
+								<a href="{% url 'brand_choose' %}">
+									<img data-hover="{% static 'img/print_hover.png' %}" src="{% static 'img/print1.png' %}" alt="">
+								</a>
+                                <strong>Узнать цены на ремонт устройства</strong>
+
+								<br><br><a href="{% url 'brand_choose' %}" class="btn btn-default btn-block">Открыть</a>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+							<div class="thumbnail dark">
+								<a href="http://leflet.ru/">
+									<img data-hover="{% static 'img/leflet_img_link.png' %}" src="{% static 'img/new_cart.png' %}" alt="">
+								</a>
+                                <strong>Узнать стоимость картриджей</strong>
+								<br><br><a href="http://leflet.ru/" class="btn btn-default btn-block">Открыть</a>
+							</div>
+						</div>
+					</div>
+
+
+                    {% include 'usp_icons.html' %}
+					<!-- END CONTENT ITEM -->
+                    {% include 'main_content_more_1.html' %}
+				</div>
+			</div>
+
+
+{% endblock %}
