@@ -1,0 +1,89 @@
+{% extends 'content_page.html' %}
+{%  load static %}
+{% block poisk_kartridj %}
+    <h4>Введите модель картриджа или принтера</h4>
+    <form method="GET" action="{% url 'result_of_poisk' %}">
+      <div class="input-group">
+        <input type="text" class="form-control" name="poisk" placeholder="Поиск" value="{{ request.GET.poisk }}">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+
+
+
+      </div>
+
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+
+    </form>
+
+{% endblock %}
+{% block content_detail %}
+    <div class="row product-detail">
+
+        <div class="well">
+
+        <div class="row">
+                    <div class="col-xs-12 col-md-8">
+                    <h5>Прайс на ремонт устройства:</h5><br>
+                        {% for printers in rem_printeres %}
+
+                             <h4><a href="{% url 'detail_of_printer' %}?dev_model={{ printers.id }}">{{ printers.name_dev }}</a></h4> <br>
+
+
+                        {% endfor %}
+
+
+                    </div>
+            </div>
+         <p><h5> К устройству {{ query }} подходят картриджи:</h5><br>
+
+            <div class="row product-list-inline-small">
+                    {% for printer in printeres %}
+                    <div class="col-xs-4 col-sm-3">
+                        <div class="thumbnail">
+                            <a href="{% url 'detail_of_cartridge' %}?cart_id={{ printer.id }}"><img onerror="this.src='{% static 'img/default_img.png' %}'" src="media/{{ printer.image_kartridj  }} " alt="" style="height:100px;"></a>
+                            <div class="caption">
+                                <a href="{% url 'detail_of_cartridge' %}?cart_id={{ printer.id }}"><p>Заправка {{ printer.short_name }}</p></a>
+                                <p>{{ printer.long_name  }}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                    <div class="col-xs-12 col-md-5">
+                        <a class="btn btn-block btn-default" href="{{request.META.HTTP_REFERER}}"><span class="glyphicon glyphicon-chevron-left"></span>Назад</a>
+
+                    </div>
+
+
+            </div>
+            </div>
+
+
+
+        </div>
+
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}| Система непрерывной подачи тонера Smart Toner System {% endblock %}
+{% block des_key %}
+    <meta name="description" content="Сервисный центр представляет на рынке расходных материалов уникальную альтернативу заправке совместимых и оригинальных картриджей. Первое в мире! Единственное в России! Устройство пневматической подачи тонера в лазерный принтер Smart Toner System">
+    <meta name="keywords" content="заправка лазерных картриджей, smart toner system, sts, заправка hp, заправка kyocera">
+{% endblock %}
+{% load static %}
+{% block searching %}
+
+<!-- START CONTENT ITEM -->
+<br>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="well well-small">
+            <ul class="nav nav-list">
+                <li class="nav-header">Smart Toner System</li>
+                <li><a href="{% url 'sts_about' %}">Об устройстве</a></li>
+                <li><a href="{% url 'sts_how-it-works' %}">Принцип работы</a></li>
+                <li><a href="{% url 'sts_supply' %}">Расходные материалы</a></li>
+                <li><a href="{% url 'sts_price' %}">Стоимость</a></li>
+                <li><a href="{% url 'sts_vopros-otvet' %}">Вопрос-Ответ</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- END CONTENT ITEM -->
+
+
+<!-- START CONTENT ITEM -->
+<div class="row">
+    <div class="col-xs-12">
+        <div class="article">
+            <img  src="{% static 'img/STS/66361u.jpg' %}" align="left" >
+            <article>
+
+
+
+            </article>
+
+        </div>
+
+    </div>
+</div>
+<!-- END CONTENT ITEM -->
+
+
+{% endblock %}
+{% block sts %}
+
+{% endblock %}

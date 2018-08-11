@@ -1,0 +1,34 @@
+{% extends 'skupka/base_skupka.html' %}
+{%  load static %}
+
+
+{% block content_detail %}
+    <div class="row">
+
+<h4 align="center"><strong>Прайс на закупку оригинальных картриджей HP</strong></h4>
+
+        <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Наименование</th>
+                            <th>Цена</th>
+                          </tr>
+                        </thead>
+
+
+                {% for text in texts %}
+                          <tr>
+                              <td>{{ text.name_kart }}</td>
+                            <td>{{ text.price_kart }}</td>
+
+                          </tr>
+                {% endfor %}
+                      </table>
+
+
+    </div>
+
+
+
+
+{% endblock %}

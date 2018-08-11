@@ -1,0 +1,41 @@
+{% extends 'content_page.html' %}
+{%  load static %}
+{% block poisk_kartridj %}
+<h4 align="center">Скупка оригинальных картриджей</h4>
+
+
+
+
+
+
+        <h6 align="center">Выберите интересующий бренд для просмотра прайса<br></h6>
+
+        <ul class="pager">
+
+
+            <li>
+        <a href="{% url 'zakup-price-hp' %}"><img src="{%  static 'img/brand_icons/hp2.gif' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'zakup-price-brother' %}"><img src="{%  static 'img/brand_icons/brother.gif' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'zakup-price-kyocera' %}"><img src="{%  static 'img/brand_icons/kyocera.png' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'zakup-price-canon' %}"><img src="{%  static 'img/brand_icons/canon_l.gif' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'zakup-price-samsung' %}"><img src="{%  static 'img/brand_icons/samsun.gif' %}"></a>
+            </li>
+
+
+        </ul>
+
+
+
+{% endblock %}
+
+{% block content_detail %}
+
+{% endblock %}

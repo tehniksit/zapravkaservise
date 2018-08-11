@@ -1,0 +1,95 @@
+{% extends 'poisk_kartridj.html' %}
+{%  load static %}
+
+
+{% block content_detail %}
+
+    <div class="row">
+    {{ printer }}
+        <div class="col-xs-12">
+            {% if sorry%}
+
+                <h4>{{ sorry }}</h4><br>
+                <h5>{{ sorry2 }}</h5>
+                <h5>{{ sorry3 }}</h5>
+                <ul class="pager">
+
+
+            <li>
+        <a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer=HP"><img src="{%  static 'img/brand_icons/hp2.gif' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer=Brother"><img src="{%  static 'img/brand_icons/brother.gif' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer=Kyocera"><img src="{%  static 'img/brand_icons/kyocera.png' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer=Canon"><img src="{%  static 'img/brand_icons/canon_l.gif' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer=Samsung"><img src="{%  static 'img/brand_icons/samsun.gif' %}"></a>
+            </li>
+
+
+        </ul>
+
+{#            {% else %}#}
+{#                <h5>Картриджи бренда {{ manufacturer }}</h5>#}
+            {% endif %}
+
+
+        </div>
+
+    </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="row product-list-inline-small">
+                    {% for result in result_kartridjes %}
+                    <div class="col-xs-4 col-sm-3">
+                        <div class="thumbnail">
+                            <a href="{% url 'detail_of_cartridge' %}?cart_id={{ result.id }}"><img onerror="this.src='{% static 'img/default_img.png' %}'" src="media/{{ result.image_kartridj  }} " alt="" style="height:100px;"></a>
+                            <div class="caption">
+                                <a href=""><p>Заправка {{ result.short_name }}</p></a>
+                                <p>{{ result.long_name  }}<span class="label label-important price pull-right">{{ result.price}}р</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+ <div class="row">
+    <div class="col-xs-12">
+{#pagination pull-right#}
+
+        <ul class="pager">
+{#            <span class="step-links">#}
+                {% if result_kartridjes.has_previous %}
+                    <li class="previous"><a href="{% url 'searching' %}?manufacturer={{ manufacturer }}&poisk={{ request.GET.poisk }}&page={{ result_kartridjes.previous_page_number }}">&laquo; Пред.</a></li>
+{#                    <a href="?page={{ result_kartridjes.previous_page_number }}">пред.</a>#}
+                {% endif %}
+
+{#                <span class="current">#}
+        {% if result_kartridjes.number %}
+            <li>Страница  {{ result_kartridjes.number }} из {{ result_kartridjes.paginator.num_pages }}</li>
+        {% endif %}{#                    <li><a href="#">&hellip;</a></li>#}
+{#                    <li><a href="#">{{ result_kartridjes.paginator.num_pages }}</a></li>#}
+{#                    Страница {{ result_kartridjes.number }} из {{ result_kartridjes.paginator.num_pages }}.#}
+{#                </span>#}
+
+                {% if result_kartridjes.has_next %}
+                    <li class="next"><a href="{% url 'searching' %}?manufacturer={{ manufacturer }}&poisk={{ request.GET.poisk }}&page={{ result_kartridjes.next_page_number }}">След. &raquo;</a></li>
+{#                    <a href="?page={{ result_kartridjes.next_page_number }}">след</a>#}
+                {% endif %}
+{#            </span>#}
+        </ul>
+    </div>
+
+ </div>
+
+
+{% endblock %}
