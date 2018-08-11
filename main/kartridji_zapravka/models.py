@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 from django.db import models
 from main.devices.models import Device
 
@@ -28,11 +26,10 @@ class Zapravka(models.Model):
     lifespan = models.IntegerField(default=0, verbose_name='Ресурс')
     color = models.CharField(choices=COLOR_CHOICES, default='Black', verbose_name='Цвет', max_length=128)
     compatibility = models.ManyToManyField(Device, verbose_name='Совместимость', blank=True)
-    price = models.IntegerField(default=0, verbose_name='Цена')
-    price_2 = models.IntegerField(default=0, verbose_name='Цена от 2-х')
-    price_4 = models.IntegerField(default=0, verbose_name='Цена от 4-х')
-    price_5 = models.IntegerField(default=0, verbose_name='Цена от 5-х')
-    image_kartridj = models.ImageField(upload_to='static/img/kartridj/', blank=True, verbose_name='Изображение')
+    price = models.IntegerField(default=0, verbose_name='Заправка в офисе')
+
+    price_v = models.IntegerField(default=0, verbose_name='Заправка на выезде')
+    image_kartridj = models.FileField(null=True ,blank=True, verbose_name='Изображение')
     def __str__(self):
-        return (str(self.manufacturer)+' '+ str(self.short_name)+' '+str(self.long_name)+' '+str(self.price)+' '+str(self.color))
+        return (str(self.manufacturer)+' '+ str(self.short_name)+' '+str(self.long_name)+' '+str(self.price)+' '+str(self.price_v)+' '+str(self.color))
 

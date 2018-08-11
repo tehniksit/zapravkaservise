@@ -46,8 +46,14 @@ def rajony(request, rajony_id):
             Q(pk=rajony_id)
         )
 
+    for rtitle in rajony_content:
+        rtitle_1 = rtitle.title_rajony
+        rtext_1 = rtitle.text_rajony
+
     context = {
         'rajony_content': rajony_content,
+        'rajony_title': rtitle_1,
+        'rajony_text': rtext_1,
     }
 
     return render(request, 'rajony.html', context)

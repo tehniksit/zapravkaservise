@@ -7,10 +7,10 @@ SECRET_KEY = 'dji$y(z^87_+0so=438urqe&sj-+gp0yhui))@ebylxeo)pxrd'
 
 DEBUG = False
 
+#ALLOWED_HOSTS = ['.zapravkaservice.ru', 'tehniks-it.ru', 'www.zapravkaservice.ru',]
+
 ALLOWED_HOSTS = ['*']
 
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -23,6 +23,8 @@ INSTALLED_APPS = [
     'main.mainpage',
     'main.main_content',
     'main.devices',
+    'main.STS',
+    'main.skup',
 
 
 
@@ -62,11 +64,11 @@ WSGI_APPLICATION = 'zapravkaservise.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': '',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST' : '',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'my_db',
+        'USER': 'vlad',
+        'PASSWORD': 'vlad0717',
+        'HOST' : 'localhost',
         'PORT' : ''
     }
 }
@@ -102,8 +104,21 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), os.path.join(BASE_DIR, 'static/static')]
-
-
-STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+STATICFILES_DIRS = [
+    '/opt/djangoEnv/zapravkaservise/static',
+	'/opt/djangoEnv/zapravkaservise/media',
+	
+
+]     
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static_web")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media_web")
+
+
+
+
+

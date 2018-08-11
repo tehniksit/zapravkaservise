@@ -1,5 +1,56 @@
 {% extends 'content_page.html' %}
 {%  load static %}
+
+{% block poisk_kartridj %}
+<h4>Введите модель картриджа или принтера</h4>
+    <form method="GET" action="{% url 'searching' %}">
+    <h5>По модели картриджа</h5>
+      <div class="input-group">
+
+          <input type="text" class="form-control" name="poisk" placeholder="...пример: 1140, 85a" value="{{ request.GET.poisk }}">
+
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <br>
+
+
+
+
+          <br>
+        <h6>Если вы не нашли картридж через поисковую строку<br>
+        Вы можете выбрать бренд и найти картридж вручную</h6>
+          <br>
+        <ul class="pager">
+
+
+            <li>
+        <a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer=HP"><img src="{%  static 'img/brand_icons/hp2.gif' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer=Brother"><img src="{%  static 'img/brand_icons/brother.gif' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer=Kyocera"><img src="{%  static 'img/brand_icons/kyocera.png' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer=Canon"><img src="{%  static 'img/brand_icons/canon_l.gif' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer=Samsung"><img src="{%  static 'img/brand_icons/samsun.gif' %}"></a>
+            </li>
+
+
+        </ul>
+
+
+
+{% endblock %}
+
 {% block content_detail %}
 
     <div class="row product-detail">
@@ -12,7 +63,8 @@
 
 
 
-                                <a class="product-detail-lightbox colorbox" rel="colorbox1" href="" title="Product A"><img class="product-image img-responsive" alt="Product A" src="{{ STATIC_URL }}{{ device.image_printer  }}"></a>
+                                <img onerror="this.src='{% static 'img/default_img.png' %}'" class="product-image img-responsive" src="media/{{ device.image_printer  }}">
+
 
                             </div>
 
@@ -35,7 +87,7 @@
 
                             <div class="row">
                                 <div class="col-xs-12 col-md-4">
-                                    <a class="btn btn-block btn-default" href="{% url 'brand_choose' %}"><span class="glyphicon glyphicon-chevron-left"></span>Назад</a>
+                                    <a class="btn btn-block btn-default" href="{{request.META.HTTP_REFERER}}"><span class="glyphicon glyphicon-chevron-left"></span>Назад</a>
 
                                 </div>
                                 <div class="col-xs-12 col-md-5">

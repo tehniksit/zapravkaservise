@@ -3,11 +3,12 @@ from django.contrib import admin
 
 from main.main_content import views
 
-admin.autodiscover()
 
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
 
     url(r'^$', views.main_content, name='main_content'),
+    url(r'^index.html?$', views.main_content, name='main_content'),
     url(r'^contacts/?$', views.contact_page, name='contact_page'),
     url(r'^about$',  views.about_us, name='about_us'),
     url(r'^rajony-vyezdov/38-zapravka-kartridzhej-aviamotornaya$',  views.rajony, {'rajony_id': '1' }, name='rajony', ),
@@ -158,7 +159,7 @@ urlpatterns = [
 ]
 
 
-
+urlpatterns += staticfiles_urlpatterns()
 
 
 

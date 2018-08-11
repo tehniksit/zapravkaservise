@@ -6,7 +6,7 @@ from django.shortcuts import render
 def main(request):
 
 
-    return render(request, 'base.html', context)
+    return render(request, 'base.html')
 
 
 

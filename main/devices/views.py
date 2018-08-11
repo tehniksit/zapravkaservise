@@ -34,10 +34,8 @@ def detail_of_printer(request):
     if query:
 
         query_1 = Relations.objects.all()
-        query_1 = query_1.filter(
+        query_1 = query_1.filter(dev_model_id__exact=query)
 
-            Q(dev_model__id__icontains=query)
-        )
         for pic in query_1:
             pic_path = str(pic.image_printer)
 

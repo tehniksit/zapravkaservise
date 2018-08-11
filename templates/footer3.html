@@ -20,10 +20,12 @@
                         <li> <a href="#"> Новости </a> </li>
                         <li> <a href="{% url 'brand_choose' %}"> Ремонт оргтехники </a> </li>
                         <li> <a href="{% url 'poisk_kartridj' %}"> Заправка картриджей </a> </li>
+                        <li> <a href="{% url 'sts_about' %}">Smart Toner System</a> </li>
                         <li> <a href="http://leflet.ru/"> Продажа картриджей </a> </li>
                     </ul>
                 </div>
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+
 
                 </div>
                 <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
@@ -53,9 +55,13 @@
 
     <div class="footer-bottom">
         <div class="container">
-            <p class="pull-left">  Все права принадлежат разработчикам © 2017 </p>
+            <p class="pull-left">  Сервисный центр ЗаправкаСервис © 2018 </p>
+            {% include 'metrika.html' %}
             <div class="pull-right">
+
+
                 <ul class="nav nav-pills payments">
+
                     <li><i class="fa fa-cc-visa"></i></li>
                     <li><i class="fa fa-cc-mastercard"></i></li>
 

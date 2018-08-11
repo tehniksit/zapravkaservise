@@ -4,56 +4,124 @@
 
 {% block content_detail %}
     <div class="row">
+    {{ printer }}
         <div class="col-xs-12">
-            <br>
+            {% if sorry%}
+
+                <h4>{{ sorry }}</h4><br>
+                <h5>{{ sorry2 }}</h5>
+                <h5>{{ sorry3 }}</h5>
+                <h5>{{ sorry4 }}</h5>
+                <ul class="pager">
+
+
+            <li>
+        <a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer=HP"><img src="{%  static 'img/brand_icons/hp2.gif' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer=Brother"><img src="{%  static 'img/brand_icons/brother.gif' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer=Kyocera"><img src="{%  static 'img/brand_icons/kyocera.png' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer=Canon"><img src="{%  static 'img/brand_icons/canon_l.gif' %}"></a>
+            </li>
+            <li>
+        <a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer=Samsung"><img src="{%  static 'img/brand_icons/samsun.gif' %}"></a>
+            </li>
+
+
+        </ul>
+
+
+            {% endif %}
+                        <p>Показать как:   &emsp;<a href="{% url 'result_of_poisk' %}?view_in=l&manufacturer={{ manufacturer }}">  Список  </a>|
+
+                        <a href="{% url 'result_of_poisk' %}?view_w=w&manufacturer={{ manufacturer }}">  Виджет  </a></p>
+
+            {% if manufacturer %}
+                <h5>Картриджи по категории: <a>{{ manufacturer }}</a></h5>
+            {% endif %}
         </div>
 
     </div>
 
-
         <div class="row">
             <div class="col-xs-12">
+
+            {% if view_w%}
                 <div class="row product-list-inline-small">
                     {% for result in result_kartridjes %}
                     <div class="col-xs-4 col-sm-3">
                         <div class="thumbnail">
-                            <a href="{% url 'detail_of_cartridge' %}?cart_id={{ result.id }}"><img  src="{{ STATIC_URL }}{{ result.image_kartridj  }} " alt="" style="height:100px;"></a>
+                            <a href="{% url 'detail_of_cartridge' %}?cart_id={{ result.id }}"><img onerror="this.src='{% static 'img/default_img.png' %}'" src="media/{{ result.image_kartridj  }} " alt="" style="height:100px;"></a>
                             <div class="caption">
                                 <a href=""><p>Заправка {{ result.short_name }}</p></a>
-                                <p>{{ result.long_name  }}<span class="label label-danger price pull-right">{{ result.price  }}</span></p>
+                                <p>{{ result.long_name  }}<span class="label label-important price pull-right">{{ result.price}}р</span></p>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
+            {% elif view_in%}
+
+                   <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>{{ manufacturer }}</th>
+                            <th>Наименование</th>
+                            <th>Заправка в СЦ</th>
+                            <th>На выезде</th>
+                          </tr>
+                        </thead>
+               {% for result in result_kartridjes %}
+
+                        <tbody class='clickable-row' data-href='{% url 'detail_of_cartridge' %}?cart_id={{ result.id }}'>
+                          <tr>
+                              <td><a>{{ result.short_name }}</a></td>
+                            <td>{{ result.long_name }}</td>
+                            <td>{{ result.price }}</td>
+                            <td>{{ result.price_v }}</td>
+                          </tr>
+                        </tbody>
+                       {% endfor %}
+                      </table>
+</div>
+
+
+
+
+
+            {% endif %}
 
                 </div>
             </div>
-        </div>
 
 
-    {% if paginator.count > 8 %}
-        <!--paginator-->
-        <div class="row">
-            <div class="col-xs-12">
-
-                <!-- START CONTENT ITEM -->
-                <ul class="pagination pull-right">
-                    {% for pn in result_kartridjes.paginator.page_range %}
-
-                            {% if pn == current_page %}
-                                <li class="active"><a  href="{% url 'result_of_poisk' %}?page={{ pn }}">{{ pn }}</a></li>
-                            {% elif pn != current_page %}
-                                <li><a  href="{% url 'result_of_poisk' %}?poisk={{ request.GET.poisk }}&page={{ pn }}">{{ pn }}</a></li>
-                            {% endif %}
-                    {% endfor %}
-
-                </ul>
-                <!-- END CONTENT ITEM -->
-
-            </div>
-        </div>
-    {% endif %}
 
 
-        <!--paginator-->
+ <div class="row">
+    <div class="col-xs-12">
+
+        <ul class="pager">
+                {% if result_kartridjes.has_previous %}
+                    <li class="previous"><a href="{% url 'result_of_poisk' %}?view_w=w&manufacturer={{ manufacturer }}&poisk={{ request.GET.poisk }}&page={{ result_kartridjes.previous_page_number }}">&laquo; Пред.</a></li>
+                {% endif %}
+
+        {% if result_kartridjes.number %}
+            <li>Страница  {{ result_kartridjes.number }} из {{ result_kartridjes.paginator.num_pages }}</li>
+        {% endif %}
+
+
+                {% if result_kartridjes.has_next %}
+                    <li class="next"><a href="{% url 'result_of_poisk' %}?view_w=w&manufacturer={{ manufacturer }}&poisk={{ request.GET.poisk }}&page={{ result_kartridjes.next_page_number }}">След. &raquo;</a></li>
+                {% endif %}
+        </ul>
+    </div>
+
+
+
+ </div>
+
+
 {% endblock %}

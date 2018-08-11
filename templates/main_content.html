@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
+{% block title %} с выездом мастера по всем районам Москвы в офис и на дом {% endblock %}
+{% block des_key %}
+    <meta name="description" content="ЗаправкаСервис - Заправка картриджей с выездом мастера по всем районам Москвы в офис и на дом.  Выезд специалиста осуществляется в день поступления заявки.">
+    <meta name="keywords" content="заправка лазерных картриджей, smart toner system, sts, заправка hp, заправка kyocera">
+{% endblock %}
 {% load static %}
 {% block main_content %}
-{% include 'spec_offer.html' %}
-{% include 'slider.html' %}
-<br>
+{#{% include 'spec_offer.html' %}#}
+{#{% include 'slider.html' %}#}
+
 <div class="row">
 
 				<div class="col-xs-12">
@@ -12,11 +17,11 @@
 					<div class="product-list-inline-large">
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 							<div class="thumbnail dark">
-								<a href="{% url 'poisk_kartridj' %}">
+								<a href="{% url 'searching' %}">
 									<img data-hover="{% static 'img/zapravka_kartrigey_hover.png' %}" src="{% static 'img/zapravka_kartrige1.png' %}" alt="">
 								</a>
 									<strong>Узнать цены на заправку</strong>
-								<br><br><a href="{% url 'poisk_kartridj' %}" class="btn btn-default btn-block">Открыть</a>
+								<br><br><a href="{% url 'searching' %}" class="btn btn-default btn-block">Открыть</a>
 							</div>
 						</div>
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
@@ -31,11 +36,16 @@
 						</div>
 						<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 							<div class="thumbnail dark">
-								<a href="http://leflet.ru/">
-									<img data-hover="{% static 'img/leflet_img_link.png' %}" src="{% static 'img/new_cart.png' %}" alt="">
+								<a href="{% url 'sts_about' %}">
+{#									<div class="label label-info price">&euro; 123,<sup>99</sup></div>#}
+{#									<span class="label label-danger price price-over">&euro; 999,<sup>99</sup></span>#}
+									<img data-hover="{% static 'img/Cn9X_7HWYAA4_Hn_hover.png' %}" src="{% static 'img/Cn9X_7HWYAA4_Hn3.png' %}" alt="">
 								</a>
-                                <strong>Узнать стоимость картриджей</strong>
-								<br><br><a href="http://leflet.ru/" class="btn btn-default btn-block">Открыть</a>
+{#								<div class="caption">#}
+                                <strong>Система непрерывной подачи тонера</strong>
+
+{#								</div>#}
+								<br><br><a href="{% url 'sts_about' %}" class="btn btn-default btn-block">Открыть</a>
 							</div>
 						</div>
 					</div>
@@ -43,8 +53,10 @@
 
                     {% include 'usp_icons.html' %}
 					<!-- END CONTENT ITEM -->
+
                     {% include 'main_content_more_1.html' %}
 				</div>
+
 			</div>
 
 

@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
+ {% block title %}| {{ rajony_title}} {% endblock %}
+{% block des_key %}
+    <meta name="description" content="{{ rajony_title}}.{{ rajony_text|slice:":150"}}" />
+    <meta name="keywords" content="заправка лазерных картриджей, smart toner system, sts, заправка hp, заправка kyocera" />
+
+{% endblock %}
 {% load static %}
 {% block rajony %}
     {% include 'spec_offer.html' %}

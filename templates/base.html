@@ -2,23 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Заправка картриджей</title>
+    <title>Заправка картриджей в Москве{% block title %}{% endblock %}</title>
 
 
     {% load static %}
     {% load staticfiles %}
     <link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}">
+
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css">
-        <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+	    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
         <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" media="screen" type="text/css">
         <link href="{% static 'css/light.css' %}" rel="stylesheet" media="screen" type="text/css">
         <link href="{% static 'css/footer3.css' %}" rel="stylesheet" media="screen" type="text/css">
         <link href="{% static 'css/select2.min.css' %}" rel="stylesheet" />
-        <link rel="stylesheet" href="{% static 'css/nivo-slider.css' %}">
+        <link href="{% static 'css/nivo-slider.css' %}" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="{% static 'css/bar.css' %}" type="text/css" media="screen" />
         <link rel="stylesheet" href="{% static 'css/colorbox.css' %}">
 
+    {% block des_key %}{% endblock %}
 </head>
 <body>
 <div class="header-shadow"></div>
@@ -47,7 +50,7 @@
 					<div class="col-xs-12 col-sm-5 col-md-3 col-lg-3">
 
 						<!-- START CONTENT ITEM -->
-						<a href="{% url 'main_content' %}"><img src="{% static 'img/logo4.png' %}" alt="Logo" class="img-responsive"></a>
+						<a href="{% url 'main_content' %}"><img src="{% static 'img/logo7.png' %}" alt="Logo" class="img-responsive"></a>
 						<!-- END CONTENT ITEM -->
 
 					</div>
@@ -76,7 +79,7 @@
 								<!-- START CONTENT ITEM -->
 
 
-						    <form method="GET" action="{% url 'result_of_poisk' %}">
+						    <form method="GET" action="{% url 'searching' %}">
                               <div class="input-group">
                                 <input type="text" class="form-control" name="poisk" placeholder="Поиск...пример: 85a, 80X, m402" value="{{ request.GET.poisk }}">
                                 <div class="input-group-btn">
@@ -123,8 +126,9 @@
 									<li class="dropdown">
 										<a class="dropdown-toggle" data-toggle="dropdown" href="#">Услуги<b class="caret"></b></a>
 										<ul class="dropdown-menu">
-											<li><a href="{% url 'poisk_kartridj' %}">Заправка картриджей</a></li>
+											<li><a href="{% url 'searching' %}">Заправка картриджей</a></li>
 											<li><a href="{% url 'brand_choose' %}">Ремонт оргтехники</a></li>
+                                            <li> <a href="{% url 'sts_about' %}">Smart Toner System</a> </li>
 										</ul>
 									</li>
 
@@ -175,8 +179,8 @@
 									<li class="dropdown">
 										<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a>
 										<ul class="dropdown-menu">
-											<li><a href="#"><span class="pull-left"><small>5x</small> Заправка картриджей</span> &nbsp; <small class="pull-right label label-info">&euro; 123,-</small></a></li>
-											<li><a href="#"><span class="pull-left"><small>1x</small> Ремонт оргтехники</span> &nbsp; <small class="pull-right label label-info">&euro; 139,-</small></a></li>
+											<li><a href="#"><span class="pull-left"><small>5x</small> Заправка картриджей</span> &nbsp; <small class="pull-right label label-info">500р</small></a></li>
+											<li><a href="#"><span class="pull-left"><small>1x</small> Ремонт оргтехники</span> &nbsp; <small class="pull-right label label-info">800р</small></a></li>
 											<li class="divider"></li>
 											<li><a href="#">Показать все товары<i class="glyphicon glyphicon-menu-right"></i></a></li>
 										</ul>
@@ -189,7 +193,7 @@
 					</div>
 				</div>
 
-
+                {% include 'spec_offer1.html' %}
                 {% block contact_page %}{% endblock %}
                 {% block rajony %}{% endblock %}
                 {% block about_us %}{% endblock %}
@@ -209,6 +213,7 @@
                         {% endblock %}
                     </div>
                     <div class="col-xs-12 col-sm-8">
+                        {% block sts %}{% endblock %}
                         {% block content_detail %}
 
                         {% endblock %}
@@ -239,6 +244,12 @@
     $(function() {
       $('select').select2();
     });
+
+    jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+});
 </script>
 
 </html>
