@@ -5,7 +5,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'dji$y(z^87_+0so=438urqe&sj-+gp0yhui))@ebylxeo)pxrd'
 
-DEBUG = False
+DEBUG = True
+
+DEV_MODE = True
 
 #ALLOWED_HOSTS = ['.zapravkaservice.ru', 'tehniks-it.ru', 'www.zapravkaservice.ru',]
 
@@ -62,17 +64,28 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'zapravkaservise.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'my_db',
-        'USER': 'vlad',
-        'PASSWORD': 'vlad0717',
-        'HOST' : 'localhost',
-        'PORT' : ''
+if DEV_MODE == True and DEBUG == True:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'my_local_db',
+            'USER': 'vlad',
+            'PASSWORD': '321',
+            'HOST' : 'localhost',
+            'PORT' : ''
+        }
     }
-}
-
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'my_db',
+            'USER': 'vlad',
+            'PASSWORD': 'vlad0717',
+            'HOST' : 'localhost',
+            'PORT' : ''
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -107,16 +120,24 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
-STATICFILES_DIRS = [
-    '/opt/djangoEnv/zapravkaservise/static',
-	'/opt/djangoEnv/zapravkaservise/media',
-	
 
-]     
+if DEV_MODE == True and DEBUG == True:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static_web"),
+        os.path.join(BASE_DIR, "media_web"),
+
+    ]  
+else:
+    STATICFILES_DIRS = [
+        '/opt/djangoEnv/zapravkaservise/static',
+    	'/opt/djangoEnv/zapravkaservise/media',
+    	
+
+    ]     
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static_web")
-MEDIA_ROOT = os.path.join(BASE_DIR, "media_web")
+    STATIC_ROOT = os.path.join(BASE_DIR, "static_web")
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media_web")
 
 
 

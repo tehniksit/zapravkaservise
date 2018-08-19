@@ -1,6 +1,10 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
+
+if settings.DEV_MODE == True  and settings.DEBUG == True:
+	from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 from django.conf.urls.static import static
 urlpatterns = [
 
@@ -13,9 +17,11 @@ urlpatterns = [
     url(r'^', include('main.STS.urls')),
     url(r'^', include('main.skup.urls')),
 ]
-urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_URL)
-urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_URL)
-
+if settings.DEV_MODE == True and settings.DEBUG == True:
+	urlpatterns += staticfiles_urlpatterns()
+else:
+	urllpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_URL)
+	urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_URL)
 
 
 
