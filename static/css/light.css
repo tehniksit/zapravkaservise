@@ -1,0 +1,9 @@
+.header-shadow {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    height: 40px;
+    -moz-box-shadow: 0 0 10px #999;
+    -webkit-box-shadow: 0 0 10px #999;
+    box-shadow: 0 0 10px #999;
+}
