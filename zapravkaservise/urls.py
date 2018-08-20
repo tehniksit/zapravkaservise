@@ -20,7 +20,7 @@ urlpatterns = [
 if settings.DEV_MODE == True and settings.DEBUG == True:
 	urlpatterns += staticfiles_urlpatterns()
 else:
-	urllpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_URL)
+	urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_URL)
 	urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_URL)
 
 
