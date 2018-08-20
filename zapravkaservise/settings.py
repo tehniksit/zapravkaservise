@@ -5,9 +5,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'dji$y(z^87_+0so=438urqe&sj-+gp0yhui))@ebylxeo)pxrd'
 
-DEBUG = True
+DEBUG = False
 
-DEV_MODE = True
+DEV_MODE = False
 
 #ALLOWED_HOSTS = ['.zapravkaservice.ru', 'tehniks-it.ru', 'www.zapravkaservice.ru',]
 
